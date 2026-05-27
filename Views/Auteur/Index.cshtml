@@ -1,0 +1,31 @@
+﻿@model IEnumerable<NembotKamgueGyldas.Models.Auteur>
+
+<h1 class="text-primary">📚 Liste des Auteurs</h1>
+<a asp-action="Create" class="btn btn-success mb-2">➕ Ajouter un Auteur</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Date de Naissance</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Nom</td>
+                <td>@item.Prenom</td>
+                <td>@item.Date_Naissance.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">✏️ Modifier</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">🗑️ Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
